@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.bignerdranch.android.calculator.R.id
-import com.bignerdranch.android.calculator.R.id.toolbar
 import com.bignerdranch.android.calculator.R.layout
 import net.objecthunter.exp4j.ExpressionBuilder
 
@@ -39,11 +37,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
-        val toolbar: Toolbar = findViewById(toolbar)
-        setSupportActionBar(toolbar)
-        title = "Calculator"
-//        Toolbar toolbar = (Toolbar) findViewById(id.toolbar)
-//        setSupportActionBar(toolbar)
         mathOperation = findViewById(id.math_operation)
         resultText = findViewById(id.result_text)
         clear = findViewById(id.clear_btn)
@@ -70,22 +63,22 @@ class MainActivity : AppCompatActivity() {
         back = findViewById(id.back_btn)
         equal = findViewById(id.equal_btn)
 
-        btn0.setOnClickListener {setTextFields("0")}
-        btn1.setOnClickListener {setTextFields("1")}
-        btn2.setOnClickListener {setTextFields("2")}
-        btn3.setOnClickListener {setTextFields("3")}
-        btn4.setOnClickListener {setTextFields("4")}
-        btn5.setOnClickListener {setTextFields("5")}
-        btn6.setOnClickListener {setTextFields("6")}
-        btn7.setOnClickListener {setTextFields("7")}
-        btn8.setOnClickListener {setTextFields("8")}
-        btn9.setOnClickListener {setTextFields("9")}
-        leftBracket.setOnClickListener {setTextFields("(")}
-        rightBracket.setOnClickListener {setTextFields(")")}
-        mult.setOnClickListener {setTextFields("*")}
-        division.setOnClickListener {setTextFields("/")}
-        plus.setOnClickListener {setTextFields("+")}
-        minus.setOnClickListener {setTextFields("-")}
+        btn0.setOnClickListener { setTextFields("0") }
+        btn1.setOnClickListener { setTextFields("1") }
+        btn2.setOnClickListener { setTextFields("2") }
+        btn3.setOnClickListener { setTextFields("3") }
+        btn4.setOnClickListener { setTextFields("4") }
+        btn5.setOnClickListener { setTextFields("5") }
+        btn6.setOnClickListener { setTextFields("6") }
+        btn7.setOnClickListener { setTextFields("7") }
+        btn8.setOnClickListener { setTextFields("8") }
+        btn9.setOnClickListener { setTextFields("9") }
+        leftBracket.setOnClickListener { setTextFields("(") }
+        rightBracket.setOnClickListener { setTextFields(")") }
+        mult.setOnClickListener { setTextFields("*") }
+        division.setOnClickListener { setTextFields("/") }
+        plus.setOnClickListener { setTextFields("+") }
+        minus.setOnClickListener { setTextFields("-") }
 
         clear.setOnClickListener {
             mathOperation.text = ""
@@ -100,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         }
         equal.setOnClickListener {
             try {
-val ex = ExpressionBuilder(mathOperation.text.toString()).build()
+                val ex = ExpressionBuilder(mathOperation.text.toString()).build()
                 val result = ex.evaluate()
 
                 val longRes = result.toLong()
@@ -108,7 +101,7 @@ val ex = ExpressionBuilder(mathOperation.text.toString()).build()
                     resultText.text = longRes.toString()
                 else
                     resultText.text = result.toString()
-            } catch (e:Exception) {
+            } catch (e: Exception) {
                 Log.d("Error", "message: ${e.message}")
             }
         }
@@ -120,6 +113,5 @@ val ex = ExpressionBuilder(mathOperation.text.toString()).build()
             mathOperation.text = resultText.text
             resultText.text = ""
         }
-
     }
 }
